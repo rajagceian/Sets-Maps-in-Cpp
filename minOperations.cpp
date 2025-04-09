@@ -1,12 +1,11 @@
 class Solution {
 public:
     int minOperations(vector<int>& nums, int k) {
-        int n = nums.size();
-        unordered_map<int,int> mp;
-        for(int ele : nums){
-            if(ele < k) return -1;
-            else if(ele > k) mp[ele]++;
+        unordered_set<int> uniqueGreater;
+        for (int num : nums) {
+            if (num < k) return -1;
+            if (num > k) uniqueGreater.insert(num);
         }
-        return mp.size();
+        return uniqueGreater.size();
     }
 };
